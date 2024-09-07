@@ -2,6 +2,9 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: searx
+  namespace: homelab-apps
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
@@ -11,7 +14,3 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: home-apps
-  syncPolicy:
-    automated:
-      selfHeal: true
-
