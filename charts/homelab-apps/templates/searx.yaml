@@ -6,13 +6,12 @@ spec:
   project: default
   source:
     repoURL: https://github.com/alnav3/argocd-charts
-    path: homelab/charts/searx/
-    targetRevision: HEAD
+    path: /homelab/charts/searx/
+    targetRevision: main
   destination:
     server: https://kubernetes.default.svc
     namespace: home-apps
   syncPolicy:
     automated:
       selfHeal: true
-
 
