@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: searx
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/alnav3/argocd-charts
+    path: homelab/charts/searx/
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: home-apps
+  syncPolicy:
+    automated:
+      selfHeal: true
+
+
