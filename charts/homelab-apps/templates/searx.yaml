@@ -13,4 +13,4 @@ spec:
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
-    namespace: homelab-apps
+    namespace: default
