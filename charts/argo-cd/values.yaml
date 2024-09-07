@@ -1,0 +1,29 @@
+global:
+  # -- Default domain used by all components
+  ## Used for ingresses, certificates, SSO, notifications, etc.
+  domain: argo.alnav.dev
+argo-cd:
+  dex:
+    enabled: false
+  notifications:
+    enabled: false
+  applicationSet:
+    enabled: false
+  server:
+    extraArgs:
+      - --insecure
+server:
+  ingress:
+    ## If true, Prometheus server Ingress will be created
+    enabled: true
+
+    ## Prometheus server Ingress hostnames with optional path
+    ## Must be provided if Ingress is enabled
+    ##
+    hosts:
+      - argo.alnav.dev
+
+    path: /
+  extraArgs:
+    - --insecure
+
