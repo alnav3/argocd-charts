@@ -5,7 +5,7 @@ dependencies:
   - name: pihole
     version: 2.26.1
     repository: https://mojo2600.github.io/pihole-kubernetes/
-  - name: external-dns
-    version: 8.0.1
-    repository: https://charts.bitnami.com/bitnami
+    #- name: external-dns
+    #  version: 8.0.1
+    #  repository: https://charts.bitnami.com/bitnami
 
