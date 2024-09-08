@@ -16,7 +16,7 @@ argo-cd:
       ## Must be provided if Ingress is enabled
       ##
     hosts:
-      - argo.home
+      - argo.alnav.dev
     path: /
     extraArgs:
       - --insecure
