@@ -1,4 +1,7 @@
 argo-cd:
+  configs:
+    cm:
+      timeout.reconciliation: 20s
   dex:
     enabled: false
   notifications:
