@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/alnav3/argocd-charts
-    path: system/longhorn/searx/
+    path: system/longhorn
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
