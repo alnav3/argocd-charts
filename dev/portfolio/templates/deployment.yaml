@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: alnav3/portfolio:5
+          image: alnav3/portfolio:7
           imagePullPolicy: Always
           command: ["/bin/server"]
           ports:
