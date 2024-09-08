@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: portfolio-service
+spec:
+  selector:
+      app: portfolio
+  type: NodePort
+  ports:
+    - port: 8080

@@ -1,18 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-cd
+  name: portfolio
+  namespace: default
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: https://github.com/alnav3/argocd-charts
-    path: charts/argo-cd
+    path: dev/portfolio/
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
     namespace: default
-  syncPolicy:
-    automated:
-      selfHeal: true
+
