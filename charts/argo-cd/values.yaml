@@ -6,7 +6,7 @@ argo-cd:
   applicationSet:
     enabled: false
   global:
-    domain: argo.alnav.dev
+    domain: argo.home
   server:
     ingress:
       ## If true, Prometheus server Ingress will be created
@@ -16,7 +16,7 @@ argo-cd:
       ## Must be provided if Ingress is enabled
       ##
     hosts:
-      - argo.alnav.dev
+      - argo.home
     path: /
     extraArgs:
       - --insecure
