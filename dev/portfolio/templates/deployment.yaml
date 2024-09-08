@@ -15,9 +15,9 @@ spec:
         app: portfolio
     spec:
       containers:
-      - name: portfolio
-        image: alnav3/portfolio:latest
-        imagePullPolicy: Always
-        command: ["/bin/server"]
-        ports:
-          - containerPort: 8080
+        - name: portfolio
+          image: alnav3/portfolio:3
+          imagePullPolicy: Always
+          command: ["/bin/server"]
+          ports:
+            - containerPort: 8080
