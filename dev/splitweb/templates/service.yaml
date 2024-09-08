@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: splitweb-service
+spec:
+  selector:
+      app: splitweb
+  type: NodePort
+  ports:
+    - port: 80

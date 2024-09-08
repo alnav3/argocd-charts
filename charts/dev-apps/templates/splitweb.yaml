@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: splitweb
+  namespace: default
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/alnav3/argocd-charts
+    path: dev/splitweb/
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - secrets://secrets.enc.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default

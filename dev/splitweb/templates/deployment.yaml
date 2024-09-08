@@ -1,0 +1,39 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: go-splitweb
+  labels:
+    app: splitweb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: splitweb
+  template:
+    metadata:
+      labels:
+        app: splitweb
+    spec:
+      containers:
+        - name: splitweb
+          image: alnav3/splitweb:5
+          imagePullPolicy: Always
+          command: ["/bin/server"]
+          env:
+            - name: TURSO_DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: splitweb-secrets
+                  key: TURSO_DATABASE_URL
+            - name: TURSO_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: splitweb-secrets
+                  key: TURSO_AUTH_TOKEN
+            - name: TURSO_JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: splitweb-secrets
+                  key: TURSO_JWT_SECRET
+          ports:
+            - containerPort: 80
