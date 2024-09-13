@@ -42,7 +42,6 @@ calibre-web:
         nginx.ingress.kubernetes.io/proxy-set-header-Upgrade: "Upgrade"
         nginx.ingress.kubernetes.io/proxy-set-header-Connection: "upgrade"
         nginx.ingress.kubernetes.io/proxy-set-header-X-Forwarded-Host: "books.alnav.dev"
-        nginx.ingress.kubernetes.io/proxy-cookie-path: "/ /; Secure"
       hosts:
         - host: books.alnav.dev
           paths:
