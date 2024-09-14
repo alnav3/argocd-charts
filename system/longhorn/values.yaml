@@ -1,5 +1,5 @@
-#longhorn:
-#  ingress:
-#    enabled: true
-#    host: "longhorn.home"
+longhorn:
+  ingress:
+    enabled: true
+    host: "longhorn.home"
 
