@@ -1,4 +1,8 @@
 authentik:
+  global:
+    envFrom:
+    - secretRef:
+        name: authentik-secrets
   server:
     ingress:
       ingressClassName: nginx-internal
