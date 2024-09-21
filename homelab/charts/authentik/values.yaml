@@ -1,28 +1,4 @@
 authentik:
-  global:
-    env:
-      - name: AUTHENTIK_SECRET_KEY
-        valueFrom:
-          secretKeyRef:
-            name: authentik-secrets
-            key: secret_key  # Refers to the secret key stored in authentik-secrets
-      - name: AUTHENTIK_POSTGRESQL__PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: authentik-secrets
-            key: postgres_password  # Refers to the secret key stored in authentik-secrets
-      - name: POSTGRES_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: authentik-secrets
-            key: postgres_password  # Refers to the secret key stored in authentik-secrets
-      - name: POSTGRES_POSTGRES_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: authentik-secrets
-            key: postgres_password  # Refers to the secret key stored in authentik-secrets
-
-
   server:
     ingress:
       ingressClassName: nginx-internal
