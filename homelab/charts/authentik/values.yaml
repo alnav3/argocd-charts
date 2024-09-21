@@ -1,8 +1,8 @@
 authentik:
   authentik:
-      secret_key: file:///authentik-secrets/secret_key
+      secret_key: file://authentik-secrets/secret_key
       postgresql:
-          password: file:///authentik-secrets/postgres_password
+          password: file://authentik-secrets/postgres_password
 
   worker:
       volumes:
@@ -33,7 +33,7 @@ authentik:
       enabled: true
       auth:
           username: authentik
-          password: file:///authentik-secrets/postgres_password
-          postgresPassword: file:///authentik-secrets/postgres_password
+          password: file://authentik-secrets/postgres_password
+          postgresPassword: file://authentik-secrets/postgres_password
   redis:
       enabled: true
