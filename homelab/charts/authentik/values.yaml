@@ -1,31 +1,37 @@
 authentik:
-  authentik:
-      secret_key: file:///authentik-secrets/secret_key
-      postgresql:
-          password: file:///authentik-secrets/postgres_password
-
   global:
-      volumes:
-        - name: authentik-secrets
-          secret:
-            secretName: authentik-secrets
-      volumeMounts:
-        - name: authentik-secrets
-          mountPath: /authentik-secrets
-          readOnly: true
-  server:
-      ingress:
-          # Specify kubernetes ingress controller class name
-          ingressClassName: nginx-internal
-          enabled: true
-          hosts:
-              - auth.alnav.dev
+    env:
+      - name: AUTHENTIK_SECRET_KEY
+        valueFrom:
+          secretKeyRef:
+            name: authentik-secrets
+            key: secret_key  # Refers to the secret key stored in authentik-secrets
+      - name: AUTHENTIK_POSTGRESQL__PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: authentik-secrets
+            key: postgres_password  # Refers to the secret key stored in authentik-secrets
+      - name: POSTGRES_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: authentik-secrets
+            key: postgres_password  # Refers to the secret key stored in authentik-secrets
+      - name: POSTGRES_POSTGRES_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: authentik-secrets
+            key: postgres_password  # Refers to the secret key stored in authentik-secrets
 
+
+  server:
+    ingress:
+      ingressClassName: nginx-internal
+      enabled: true
+      hosts:
+        - auth.alnav.dev
   postgresql:
-      enabled: true
-      auth:
-          username: authentik
-          password: file:///authentik-secrets/postgres_password
-          postgresPassword: file:///authentik-secrets/postgres_password
+    enabled: true
+
   redis:
-      enabled: true
+    enabled: true
+
