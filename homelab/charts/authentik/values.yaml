@@ -32,7 +32,7 @@ authentik:
   postgresql:
       enabled: true
       auth:
-          postgresql-username: authentik
+          username: authentik
           password: file:///authentik-secrets/postgres_password
           postgresPassword: file:///authentik-secrets/postgres_password
   redis:
