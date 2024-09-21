@@ -1,10 +1,10 @@
 authentik:
   authentik:
-      secret_key: file://authentik-secrets/secret_key
+      secret_key: file:///authentik-secrets/secret_key
       postgresql:
-          password: file://authentik-secrets/postgres_password
+          password: file:///authentik-secrets/postgres_password
 
-  worker:
+  global:
       volumes:
         - name: authentik-secrets
           secret:
@@ -14,14 +14,6 @@ authentik:
           mountPath: /authentik-secrets
           readOnly: true
   server:
-      volumes:
-        - name: authentik-secrets
-          secret:
-            secretName: authentik-secrets
-      volumeMounts:
-        - name: authentik-secrets
-          mountPath: /authentik-secrets
-          readOnly: true
       ingress:
           # Specify kubernetes ingress controller class name
           ingressClassName: nginx-internal
@@ -33,7 +25,7 @@ authentik:
       enabled: true
       auth:
           username: authentik
-          password: file://authentik-secrets/postgres_password
-          postgresPassword: file://authentik-secrets/postgres_password
+          password: file:///authentik-secrets/postgres_password
+          postgresPassword: file:///authentik-secrets/postgres_password
   redis:
       enabled: true
