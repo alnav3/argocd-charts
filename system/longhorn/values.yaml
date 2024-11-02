@@ -2,4 +2,6 @@ longhorn:
   ingress:
     enabled: true
     host: "longhorn.home"
+  preUpgradeChecker:
+    jobEnabled: false
 
