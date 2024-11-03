@@ -35,8 +35,5 @@ jellyfin:
     port: 8096
     type: ClusterIP
 
-  nodeSelector:
-    role: master
-
 
 
