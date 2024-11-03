@@ -2,16 +2,18 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: velero
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
+  namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/alnav3/argocd-charts
-    path: system/velero
-    targetRevision: HEAD
+    repoURL: https://vmware-tanzu.github.io/helm-charts
+    targetRevision: 7.2.2
+    chart: velero
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
-
+    namespace: velero
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
 
