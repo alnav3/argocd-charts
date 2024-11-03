@@ -8,6 +8,10 @@ jellyfin:
   ingress:
     enabled: true
     hosts:
+      - host: jellyfin.home
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
       - host: jellyfin.alnav.dev
         paths:
           - path: /
