@@ -39,7 +39,7 @@ jellyfin:
 
   service:
     port: 8096
-    type: ClusterIP
-
+    type: LoadBalancer  # Use LoadBalancer to assign an external IP
+    loadBalancerIP: "10.71.71.200"
 
 
