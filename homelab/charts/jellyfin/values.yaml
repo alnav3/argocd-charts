@@ -38,9 +38,6 @@ jellyfin:
     loadBalancerIP: "10.71.71.200"
 
   volumes:
-    - name: "render-device"
-      hostPath:
-        path: "/dev/dri/renderD128"
     - name: jellyfin-config
       hostPath:
         path: "/media/Jellyfin/config"  # Path on your node for config data
@@ -53,8 +50,6 @@ jellyfin:
 
   # -- Additional volume mounts for the Jellyfin container.
   volumeMounts:
-    - name: "render-device"
-      mountPath: "/dev/dri/renderD128"
     - name: jellyfin-config
       mountPath: "/configReal"  # Path where config will be mounted in the container
     - name: jellyfin-media
