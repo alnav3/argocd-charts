@@ -43,3 +43,11 @@ jellyfin:
     loadBalancerIP: "10.71.71.200"
 
 
+  volumeMounts:
+    - name: "render-device"
+      mountPath: "/dev/dri/renderD128"
+  volumes:
+    - name: "render-device"
+      hostPath:
+        path: "/dev/dri/renderD128"
+
