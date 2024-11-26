@@ -49,7 +49,6 @@ jellyfin:
       mountPath: "/dev/dri/renderD128"
     - name: jellyfin-config
       mountPath: "/config"  # Path where config will be mounted in the container
-      readOnly: true
     - name: jellyfin-media
       mountPath: "/media"  # Path where media will be mounted in the container
 
