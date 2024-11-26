@@ -47,6 +47,9 @@ jellyfin:
     - name: jellyfin-media
       hostPath:
         path: "/media/Jellyfin/media"  # Path on your node for media data
+    - name: transcoding
+      hostPath:
+        path: "/media/Jellyfin/transcoding"  # Path on your node for media data
 
   # -- Additional volume mounts for the Jellyfin container.
   volumeMounts:
@@ -56,4 +59,6 @@ jellyfin:
       mountPath: "/configReal"  # Path where config will be mounted in the container
     - name: jellyfin-media
       mountPath: "/mediaReal"  # Path where media will be mounted in the container
+    - name: transcoding
+      mountPath: /transcode
 
