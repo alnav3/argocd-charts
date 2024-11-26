@@ -1,12 +1,9 @@
 jellyfin:
   image:
     tag: "latest"
-  env:
-    NVIDIA_VISIBLE_DEVICES: all
-    NVIDIA_DRIVER_CAPABILITIES: all
 
-  extraArgs: ["--runtime=nvidia"]
-
+  securityContext:
+    privileged: true
   ingress:
     enabled: true
     hosts:
@@ -19,20 +16,13 @@ jellyfin:
           - path: /
             pathType: ImplementationSpecific
 
+
   persistence:
     config:
-      enabled: true
-      isPvc: false  # Deshabilitar el uso de PVC
-      customVolume:
-        hostPath:
-          path: "/media/Jellyfin/config"  # Especifica la ruta en tu nodo
+      enabled: false
 
     data:
-      enabled: true
-      isPvc: false  # Deshabilitar el uso de PVC
-      customVolume:
-        hostPath:
-          path: "/media/Jellyfin/media"  # Especifica otra ruta en tu nodo para datos (si necesario)
+      enabled: false
 
 
   replicaCount: 1  # Asegúrate de que solo una réplica esté corriendo
@@ -42,12 +32,24 @@ jellyfin:
     type: LoadBalancer  # Use LoadBalancer to assign an external IP
     loadBalancerIP: "10.71.71.200"
 
-
-  volumeMounts:
-    - name: "render-device"
-      mountPath: "/dev/dri/renderD128"
   volumes:
     - name: "render-device"
       hostPath:
         path: "/dev/dri/renderD128"
+    - name: jellyfin-config
+      hostPath:
+        path: "/media/Jellyfin/config"  # Path on your node for config data
+    - name: jellyfin-media
+      hostPath:
+        path: "/media/Jellyfin/media"  # Path on your node for media data
+
+  # -- Additional volume mounts for the Jellyfin container.
+  volumeMounts:
+    - name: "render-device"
+      mountPath: "/dev/dri/renderD128"
+    - name: jellyfin-config
+      mountPath: "/config"  # Path where config will be mounted in the container
+      readOnly: true
+    - name: jellyfin-media
+      mountPath: "/media"  # Path where media will be mounted in the container
 
