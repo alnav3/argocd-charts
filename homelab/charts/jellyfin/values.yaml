@@ -16,6 +16,10 @@ jellyfin:
           - path: /
             pathType: ImplementationSpecific
 
+  jellyfin:
+    env:
+      - DOCKER_MODS=linuxserver/mods:jellyfin-opencl-intel-23.13.26032.30  # <-- The fix
+
   resources:
    limits:
      gpu.intel.com/i915: "1"
