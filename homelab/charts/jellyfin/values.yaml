@@ -1,6 +1,6 @@
 jellyfin:
   image:
-    tag: "latest"
+    tag: "10.9.0"
 
   securityContext:
     privileged: true
