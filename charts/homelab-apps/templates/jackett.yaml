@@ -13,7 +13,7 @@ spec:
     targetRevision: 23.2.2 # Specify the chart version
     helm:
       valueFiles:
-        - "https://github.com/alnav3/argocd-charts/blob/main/media/jackett/values.yaml" # URL to your GitHub or Git repository
+        - "https://raw.githubusercontent.com/alnav3/argocd-charts/main/media/jackett/values.yaml" # URL to your GitHub or Git repository
   destination:
     server: https://kubernetes.default.svc
     namespace: default
