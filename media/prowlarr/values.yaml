@@ -2,4 +2,12 @@ prowlarr:
   metrics:
     main:
       enabled: false
+  persistence:
+    config:
+      enabled: true
+      size: 10Gi
+      targetSelector:
+        main:
+          main:
+            mountPath: /config
 
