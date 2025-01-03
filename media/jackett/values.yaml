@@ -4,18 +4,18 @@ jackett:
       # Enable the ingress for Jackett
       enabled: true
       # Mark this as the primary ingress
-    primary: true
-    # Do not enforce ingress requirement
-    required: false
-    # Provide additional annotations if needed
-    #annotations:
-    #  kubernetes.io/ingress.class: "nginx-internal" # Use your specific ingress class
-    #  # Set the ingressClassName for Kubernetes >= 1.19
-    ingressClassName: "nginx-internal"
-    ## Configure the hosts for the ingress
-    hosts:
-      - host: jackett.home
-        paths:
-          - path: /
-            pathType: Prefix
+      primary: true
+      # Do not enforce ingress requirement
+      required: false
+      # Provide additional annotations if needed
+      #annotations:
+      #  kubernetes.io/ingress.class: "nginx-internal" # Use your specific ingress class
+      #  # Set the ingressClassName for Kubernetes >= 1.19
+      ingressClassName: "nginx-internal"
+      ## Configure the hosts for the ingress
+      hosts:
+        - host: jackett.home
+          paths:
+            - path: /
+              pathType: Prefix
 
