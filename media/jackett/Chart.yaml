@@ -1,5 +1,5 @@
 apiVersion: v2
-name: jackett
+name: jackett-chart
 description: A Helm chart for Authentik
 
 # A chart can be either an 'application' or a 'library' chart.
@@ -25,5 +25,5 @@ appVersion: "1.0"
 dependencies:
 - name: jackett
   version: 23.2.2
-  repository: oci:tccr.io/truecharts
+  repository: oci://tccr.io/truecharts
 
