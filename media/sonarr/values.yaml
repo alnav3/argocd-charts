@@ -3,6 +3,15 @@ sonarr:
     main:
       enabled: false
   persistence:
+    config:
+      enabled: true
+      targetSelector:
+        main:
+          main:
+            mountPath: /config
+          exportarr:
+            mountPath: /config
+            readOnly: true
     data:
       enabled: true
       type: nfs
