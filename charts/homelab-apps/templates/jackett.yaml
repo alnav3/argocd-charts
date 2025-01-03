@@ -8,9 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: oci://tccr.io/truecharts
-    chart: jackett
-    targetRevision: "2024.6.3" # Specify the chart version
+    repoURL: oci://tccr.io/truecharts/jackett
   destination:
     server: https://kubernetes.default.svc
     namespace: default
