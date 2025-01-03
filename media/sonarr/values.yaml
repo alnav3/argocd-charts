@@ -15,7 +15,7 @@ sonarr:
     data:
       enabled: true
       type: nfs
-      path: /mnt/Storage/Media
+      path: /mnt/Storage/things
       server: 10.71.71.19
       targetSelector:
         main:
