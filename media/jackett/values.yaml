@@ -1,15 +1,15 @@
-jackett:
-  integrations:
-    traefik:
-      enable: false
-  ingress:
-    main:
-      # Enable the ingress for Jackett
-      enabled: true
-      #ingressClassName: "nginx-internal"
-      ## Configure the hosts for the ingress
-      hosts:
-        - host: jackett.home
-      tls:
-        - hosts:
-           - jackett.home
+#jackett:
+#  integrations:
+#    traefik:
+#      enable: false
+#  ingress:
+#    main:
+#      # Enable the ingress for Jackett
+#      enabled: true
+#      #ingressClassName: "nginx-internal"
+#      ## Configure the hosts for the ingress
+#      hosts:
+#        - host: jackett.home
+#      tls:
+#        - hosts:
+#           - jackett.home
