@@ -25,5 +25,5 @@ appVersion: "1.0"
 dependencies:
 - name: jackett
   version: 23.2.2
-  repository: oci:tccr.io/truecharts/jackett
+  repository: oci:tccr.io/truecharts
 
