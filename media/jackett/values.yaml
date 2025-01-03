@@ -1,6 +1,7 @@
 jackett:
-  traefik:
-    enableFixedMiddlewares: false
+  integrations:
+    traefik:
+      enable: false
   ingress:
     main:
       # Enable the ingress for Jackett
