@@ -12,7 +12,16 @@ sonarr:
           exportarr:
             mountPath: /config
             readOnly: true
-    data:
+    media:
+      enabled: true
+      type: nfs
+      path: /mnt/Storage/Media/media
+      server: 10.71.71.19
+      targetSelector:
+        main:
+          main:
+            mountPath: /media
+    torrents:
       enabled: true
       type: nfs
       path: /mnt/Storage/things
@@ -20,4 +29,4 @@ sonarr:
       targetSelector:
         main:
           main:
-            mountPath: /data
+            mountPath: /torrents
