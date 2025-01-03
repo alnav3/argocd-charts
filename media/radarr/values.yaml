@@ -5,6 +5,7 @@ radarr:
   persistence:
     config:
       enabled: true
+      size: 10Gi
       targetSelector:
         main:
           main:
