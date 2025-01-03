@@ -2,3 +2,9 @@ sonarr:
   metrics:
     main:
       enabled: false
+  persistence:
+    data:
+      enabled: true
+      type: nfs
+      path: /mnt/Storage/Media
+      server: 10.71.71.19
