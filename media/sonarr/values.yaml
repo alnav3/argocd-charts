@@ -1,3 +1,4 @@
 sonarr:
   metrics:
-    enabled: false
+    main:
+      enabled: false
