@@ -1,0 +1,3 @@
+sonarr:
+  metrics:
+    enabled: false
