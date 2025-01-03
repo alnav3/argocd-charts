@@ -1,0 +1,5 @@
+prowlarr:
+  metrics:
+    main:
+      enabled: false
+
