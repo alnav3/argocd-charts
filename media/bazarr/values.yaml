@@ -1,0 +1,33 @@
+bazarr:
+  metrics:
+    main:
+      enabled: false
+  persistence:
+    config:
+      enabled: true
+      size: 10Gi
+      targetSelector:
+        main:
+          main:
+            mountPath: /config
+          exportarr:
+            mountPath: /config
+            readOnly: true
+    media:
+      enabled: true
+      type: nfs
+      path: /mnt/Storage/Media
+      server: 10.71.71.19
+      targetSelector:
+        main:
+          main:
+            mountPath: /media
+    torrents:
+      enabled: true
+      type: nfs
+      path: /mnt/Storage/things
+      server: 10.71.71.19
+      targetSelector:
+        main:
+          main:
+            mountPath: /torrents
