@@ -16,7 +16,7 @@ spec:
           service:
             name: lidarr
             port:
-              number: 7878
+              number: 8687
   - host: lidarr.home
     http:
       paths:
@@ -26,4 +26,4 @@ spec:
           service:
             name: lidarr
             port:
-              number: 7878
+              number: 8687
