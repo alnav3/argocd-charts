@@ -1,14 +1,66 @@
 transmission:
+  securityContext:
+    container:
+      readOnlyRootFilesystem: false
+      runAsNonRoot: false
+      runAsUser: 0
+      runAsGroup: 0
+
   image:
     repository: lscr.io/linuxserver/transmission
     pullPolicy: IfNotPresent
     tag: 4.0.6@sha256:3f723b3931425c08e9c22092509430f9274e0f5f57f3a357c5b09db5bc95268e
-  metrics:
+  service:
     main:
-      enabled: false
+      ports:
+        main:
+          port: 10109
+    torrent:
+      enabled: true
+      ports:
+        torrent:
+          enabled: true
+          port: 51414
+          protocol: tcp
+        torrentudp:
+          enabled: true
+          port: "{{ .Values.service.torrent.ports.torrent.port }}"
+          protocol: udp
+
+  workload:
+    main:
+      podSpec:
+        initContainers:
+          download-ionic-ui:
+            enabled: true
+            type: init
+            command: ["/bin/sh", "-c"]
+            args: |
+              #!/bin/bash
+              set -e
+              echo "Downloading Web UI..."
+              curl -Lo /tmp/webui.zip https://github.com/6c65726f79/Transmissionic/releases/download/v1.8.0/Transmissionic-webui-v1.8.0.zip
+              unzip /tmp/webui.zip -d /web-ui-temp
+              cp -rfL /web-ui-temp/web/* /web-ui
+              rm /tmp/webui.zip
+        containers:
+          main:
+            probes:
+              liveness:
+                enabled: true
+                type: tcp
+              startup:
+                enabled: true
+                type: tcp
+              readiness:
+                enabled: true
+                type: tcp
+            env:
+              TRANSMISSION_WEB_HOME: "/web-ui"
   persistence:
     config:
       enabled: true
+      retain: true
       mountPath: "/config"
     downloads:
       enabled: true
@@ -19,4 +71,17 @@ transmission:
         main:
           main:
             mountPath: "/downloads"
-
+    watch:
+      enabled: true
+      retain: true
+      mountPath: /watch
+    web-ui:
+      enabled: true
+      type: emptyDir
+      mountPath: /web-ui
+      targetSelectAll: true
+  portal:
+    open:
+      enabled: true
+  manifestManager:
+    enabled: false
