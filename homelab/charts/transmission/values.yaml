@@ -18,5 +18,5 @@ transmission:
       targetSelector:
         main:
           main:
-            mountPath: downloads/
+            mountPath: "/downloads"
 
