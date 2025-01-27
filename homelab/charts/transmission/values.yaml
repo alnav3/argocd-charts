@@ -1,4 +1,4 @@
-radarr:
+transmission:
   image:
     repository: lscr.io/linuxserver/transmission
     pullPolicy: IfNotPresent
