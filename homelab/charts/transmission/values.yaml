@@ -1,4 +1,8 @@
 radarr:
+  image:
+    repository: lscr.io/linuxserver/transmission
+    pullPolicy: IfNotPresent
+    tag: 4.0.6@sha256:3f723b3931425c08e9c22092509430f9274e0f5f57f3a357c5b09db5bc95268e
   metrics:
     main:
       enabled: false
