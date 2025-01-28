@@ -14,13 +14,13 @@ transmission:
     main:
       ports:
         main:
-          port: 10109
+          port: 9091
     torrent:
       enabled: true
       ports:
         torrent:
           enabled: true
-          port: 51414
+          port: 51413
           protocol: tcp
         torrentudp:
           enabled: true
