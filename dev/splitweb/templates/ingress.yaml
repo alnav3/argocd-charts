@@ -7,7 +7,7 @@ metadata:
     ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: splitweb.alnav.dev
+  - host: split.alnav.dev
     http:
       paths:
       - path: /
@@ -16,7 +16,7 @@ spec:
           service:
             name: splitweb-service
             port:
-              number: 8686
+              number: 8080
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -27,7 +27,7 @@ metadata:
     ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: splitweb.home
+  - host: split.home
     http:
       paths:
       - path: /
@@ -36,5 +36,5 @@ spec:
           service:
             name: splitweb-service
             port:
-              number: 8686
+              number: 8080
 
