@@ -22,7 +22,7 @@ radarr:
         main:
           main:
             mountPath: /media
-    torrents:
+    downloads:
       enabled: true
       type: nfs
       path: /mnt/Storage/things
@@ -30,4 +30,4 @@ radarr:
       targetSelector:
         main:
           main:
-            mountPath: /torrents
+            mountPath: /downloads

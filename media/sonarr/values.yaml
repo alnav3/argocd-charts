@@ -21,7 +21,7 @@ sonarr:
         main:
           main:
             mountPath: /media
-    torrents:
+    downloads:
       enabled: true
       type: nfs
       path: /mnt/Storage/things
@@ -29,4 +29,5 @@ sonarr:
       targetSelector:
         main:
           main:
-            mountPath: /torrents
+            mountPath: /downloads
+
