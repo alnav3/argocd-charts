@@ -1,13 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: portfolio-ingress
+  name: portfolio-ingress-external
   annotations:
-    kubernetes.io/ingress.class: "nginx-internal"
+    kubernetes.io/ingress.class: "nginx-external"
     ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: alnav.home
+  - host: alnav.dev
     http:
       paths:
       - path: /
@@ -17,7 +17,17 @@ spec:
             name: portfolio-service
             port:
               number: 8080
-  - host: alnav.dev
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: portfolio-ingress-internal
+  annotations:
+    kubernetes.io/ingress.class: "nginx-internal"
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: alnav.home
     http:
       paths:
       - path: /

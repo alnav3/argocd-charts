@@ -1,13 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: splitweb-ingress
+  name: splitweb-ingress-external
   annotations:
-    kubernetes.io/ingress.class: "nginx-internal"
+    kubernetes.io/ingress.class: "nginx-external"
     ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: split.alnav.dev
+  - host: splitweb.alnav.dev
     http:
       paths:
       - path: /
@@ -16,4 +16,25 @@ spec:
           service:
             name: splitweb-service
             port:
-              number: 80
+              number: 8686
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: splitweb-ingress-internal
+  annotations:
+    kubernetes.io/ingress.class: "nginx-internal"
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: splitweb.home
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: splitweb-service
+            port:
+              number: 8686
+
