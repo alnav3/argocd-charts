@@ -2,10 +2,9 @@ transmission:
   securityContext:
     container:
       readOnlyRootFilesystem: false
-      runAsNonRoot: false
-      runAsUser: 0
-      runAsGroup: 0
-
+      runAsNonRoot: true
+      runAsUser: 1000 # Change to an existing non-root user (UID)
+      runAsGroup: 1000 # Change to an existing non-root group (GID)
   image:
     repository: lscr.io/linuxserver/transmission
     pullPolicy: IfNotPresent
