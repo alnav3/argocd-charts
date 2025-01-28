@@ -1,0 +1,41 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: search-ingress-external
+  annotations:
+    kubernetes.io/ingress.class: "nginx-external"
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: search.alnav.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: searx-searxng
+            port:
+              number: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: search-ingress-internal
+  annotations:
+    kubernetes.io/ingress.class: "nginx-internal"
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: search.home
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: searx-searxng
+            port:
+              number: 8080
+
+
