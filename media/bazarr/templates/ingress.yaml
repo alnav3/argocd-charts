@@ -1,7 +1,27 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: bazarr-ingress
+  name: bazarr-ingress-external
+  annotations:
+    kubernetes.io/ingress.class: "nginx-external"
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: bazarr.alnav.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: bazarr
+            port:
+              number: 6767
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bazarr-ingress-internal
   annotations:
     kubernetes.io/ingress.class: "nginx-internal"
     ingress.kubernetes.io/rewrite-target: /
@@ -17,3 +37,4 @@ spec:
             name: bazarr
             port:
               number: 6767
+
