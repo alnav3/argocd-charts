@@ -55,7 +55,7 @@ transmission:
                 enabled: true
                 type: tcp
             env:
-              TRANSMISSION_WEB_HOME: "/web-ui"
+              #TRANSMISSION_WEB_HOME: "/web-ui"
   persistence:
     config:
       enabled: true
