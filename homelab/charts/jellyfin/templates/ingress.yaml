@@ -7,6 +7,16 @@ metadata:
     ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
+  - host: tv.home
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: jellyfin-service
+            port:
+              number: 8096
   - host: tv.alnav.dev
     http:
       paths:
