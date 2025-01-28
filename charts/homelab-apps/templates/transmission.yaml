@@ -11,6 +11,9 @@ spec:
     repoURL: https://github.com/alnav3/argocd-charts
     path: homelab/charts/transmission/
     targetRevision: HEAD
+    helm:
+      valueFiles:
+        - secrets://secret.values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: default

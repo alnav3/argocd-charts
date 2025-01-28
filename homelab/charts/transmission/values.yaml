@@ -29,19 +29,19 @@ transmission:
   workload:
     main:
       podSpec:
-        #initContainers:
-        #  download-ionic-ui:
-        #    enabled: true
-        #    type: init
-        #    command: ["/bin/sh", "-c"]
-        #    args: |
-        #      #!/bin/bash
-        #      set -e
-        #      echo "Downloading Web UI..."
-        #      curl -Lo /tmp/webui.zip https://github.com/6c65726f79/Transmissionic/releases/download/v1.8.0/Transmissionic-webui-v1.8.0.zip
-        #      unzip /tmp/webui.zip -d /web-ui-temp
-        #      cp -rfL /web-ui-temp/web/* /web-ui
-        #      rm /tmp/webui.zip
+        initContainers:
+          download-ionic-ui:
+            enabled: true
+            type: init
+            command: ["/bin/sh", "-c"]
+            args: |
+              #!/bin/bash
+              set -e
+              echo "Downloading Web UI..."
+              curl -Lo /tmp/webui.zip https://github.com/6c65726f79/Transmissionic/releases/download/v1.8.0/Transmissionic-webui-v1.8.0.zip
+              unzip /tmp/webui.zip -d /web-ui-temp
+              cp -rfL /web-ui-temp/web/* /web-ui
+              rm /tmp/webui.zip
         containers:
           main:
             probes:
@@ -55,7 +55,7 @@ transmission:
                 enabled: true
                 type: tcp
             env:
-              TRANSMISSION_WEB_HOME: "/transmission/web-ui"
+              TRANSMISSION_WEB_HOME: "/web-ui"
   persistence:
     config:
       enabled: true
