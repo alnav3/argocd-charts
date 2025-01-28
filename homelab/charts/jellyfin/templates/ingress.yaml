@@ -37,3 +37,18 @@ spec:
             name: jellyfin
             port:
               number: 8096
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyfin-service
+  namespace: default
+spec:
+  type: ExternalName
+  externalName: 10.71.71.40
+  ports:
+  - port: 8096
+    targetPort: 8096
+    protocol: TCP
+
+
