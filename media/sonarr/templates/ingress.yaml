@@ -1,9 +1,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: sonarr-ingress
+  name: sonarr-ingress-external
   annotations:
-    kubernetes.io/ingress.class: "nginx-internal"
+    kubernetes.io/ingress.class: "nginx-external"
     ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
@@ -17,6 +17,16 @@ spec:
             name: sonarr
             port:
               number: 8989
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sonarr-ingress-internal
+  annotations:
+    kubernetes.io/ingress.class: "nginx-internal"
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
   - host: sonarr.home
     http:
       paths:
@@ -27,3 +37,4 @@ spec:
             name: sonarr
             port:
               number: 8989
+
