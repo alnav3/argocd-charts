@@ -24,3 +24,8 @@ persistence:
   accessMode: ReadWriteOnce
   size: 1Gi
   mountPath: /var/lib/sqld
+ingress:
+  enabled: true
+  host: libsql.home
+  annotations: {}
+
