@@ -29,3 +29,7 @@ ingress:
   host: libsql.home
   annotations: {}
 
+service:
+  type: LoadBalancer
+  port: 8080
+
