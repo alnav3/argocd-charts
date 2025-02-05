@@ -1,0 +1,26 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/tursodatabase/libsql-server
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+
+env:
+  # Set the node type. For a replica, change this to "replica" and set SQLD_PRIMARY_URL.
+  SQLD_NODE: primary
+  # Example: SQLD_PRIMARY_URL: "https://<host>:<port>"
+  SQLD_DB_PATH: iku.db
+  # Optionally override the HTTP and gRPC listen addresses:
+  SQLD_HTTP_LISTEN_ADDR: "0.0.0.0:8080"
+  SQLD_GRPC_LISTEN_ADDR: "0.0.0.0:5001"
+
+persistence:
+  enabled: true
+  storageClass: ""
+  accessMode: ReadWriteOnce
+  size: 1Gi
+  mountPath: /var/lib/sqld

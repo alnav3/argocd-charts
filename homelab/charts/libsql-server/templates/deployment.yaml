@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "libsql-server.fullname" . }}
+  labels:
+    app: {{ include "libsql-server.name" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "libsql-server.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "libsql-server.name" . }}
+    spec:
+      containers:
+        - name: {{ include "libsql-server.name" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          env:
+            - name: SQLD_NODE
+              value: "{{ .Values.env.SQLD_NODE }}"
+            - name: SQLD_DB_PATH
+              value: "{{ .Values.env.SQLD_DB_PATH }}"
+            - name: SQLD_HTTP_LISTEN_ADDR
+              value: "{{ .Values.env.SQLD_HTTP_LISTEN_ADDR }}"
+            - name: SQLD_GRPC_LISTEN_ADDR
+              value: "{{ .Values.env.SQLD_GRPC_LISTEN_ADDR }}"
+          volumeMounts:
+            - name: data
+              mountPath: {{ .Values.persistence.mountPath }}
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ include "libsql-server.fullname" . }}-pvc
