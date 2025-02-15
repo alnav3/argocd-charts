@@ -60,6 +60,7 @@ transmission:
     config:
       enabled: true
       retain: true
+      size: 1Gi
       mountPath: "/config"
     downloads:
       enabled: true
@@ -73,6 +74,7 @@ transmission:
     watch:
       enabled: true
       retain: true
+      size: 1Gi
       mountPath: /watch
     web-ui:
       enabled: true
