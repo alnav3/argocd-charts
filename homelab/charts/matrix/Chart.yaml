@@ -6,7 +6,7 @@ version: 0.1.0
 appVersion: "latest"
 
 dependencies:
-  - name: matrix
-    version: 2.4.2
-    repository: https://remram44.github.io/matrix-helm
+  - name: matrix-synapse
+    version: 3.11.3
+    repository: https://ananace.gitlab.io/charts
 

@@ -1,30 +1,5 @@
-matrix:
-  homeserverConfig:
-    server_name: alnav.dev
-    public_baseurl: https://synapse.alnav.dev/
-    web_client_location: https://chat.alnav.dev/
-    email:
-      app_name: Example Chat
-  ingress:
-    enabled: true
-    annotations:
-      kubernetes.io/ingress.class: "nginx-external"
-    hosts:
-      - synapse.alnav.dev
-    tls:
-      - hosts:
-          - synapse.alnav.dev
-  element:
-    config:
-      default_server_config:
-        m.homeserver:
-          base_url: https://synapse.alnav.dev
-          server_name: Example Chat
-    ingress:
-      enabled: true
-      annotations:
-        kubernetes.io/ingress.class: "nginx-external"
-      host: chat.alnav.dev
-secret:
-  generate: true
-  name: "matrix"
+matrix-synapse:
+  serverName: 'alnav.dev'
+  publicServerName: 'matrix.alnav.dev'
+
+
