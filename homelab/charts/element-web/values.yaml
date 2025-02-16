@@ -1,6 +1,6 @@
 element-web:
   defaultServer:
-    url: 'matrix.alnav.dev'
+    url: 'alnav.dev'
     name: 'alnav'
   ingress:
     enabled: true
