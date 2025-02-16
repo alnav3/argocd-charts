@@ -1,0 +1,12 @@
+apiVersion: v2
+name: matrix-argo
+description: A Helm chart for deploying Matrix (Synapse + Element) using ArgoCD
+type: application
+version: 0.1.0
+appVersion: "latest"
+
+dependencies:
+  - name: matrix
+    version: 2.4.2
+    repository: https://remram44.github.io/matrix-helm
+
