@@ -11,9 +11,6 @@ spec:
     repoURL: https://github.com/alnav3/argocd-charts
     path: homelab/charts/matrix/
     targetRevision: HEAD
-    helm:
-      valueFiles:
-        - secrets://secrets.enc.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: default
