@@ -1,0 +1,13 @@
+apiVersion: v2
+name: element-chat
+description: A Helm chart for deploying Matrix (Synapse + Element) using ArgoCD
+type: application
+version: 0.1.0
+appVersion: "latest"
+
+dependencies:
+  - name: element-web
+    version: 1.4.2
+    repository: https://ananace.gitlab.io/charts
+
+

@@ -1,0 +1,11 @@
+element-web:
+  defaultServer:
+    url: 'matrix.alnav.dev'
+    name: 'alnav'
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx-external
+    hosts:
+      - chat.alnav.dev
+
