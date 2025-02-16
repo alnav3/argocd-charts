@@ -1,5 +1,6 @@
 matrix-synapse:
   serverName: 'alnav.dev'
   publicServerName: 'matrix.alnav.dev'
+  argocd: true
 
 
