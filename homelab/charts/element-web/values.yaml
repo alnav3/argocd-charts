@@ -1,6 +1,6 @@
 element-web:
   defaultServer:
-    url: 'alnav.dev'
+    url: 'chat.alnav.dev'
     name: 'alnav'
   ingress:
     enabled: true
