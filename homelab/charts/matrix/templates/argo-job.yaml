@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "matrix.fullname" . }}-secret
+  name: {{ include "matrix.fullname" . }}-secret-argo
   labels:
     {{- include "matrix.labels" . | nindent 4 }}
   annotations:
