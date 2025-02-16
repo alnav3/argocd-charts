@@ -5,6 +5,9 @@ matrix:
     web_client_location: https://chat.alnav.dev/
     email:
       app_name: Example Chat
+  secret:
+    generate: true
+    name: "matrix"
   ingress:
     enabled: true
     annotations:
