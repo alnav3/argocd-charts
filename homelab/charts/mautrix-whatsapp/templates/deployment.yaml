@@ -20,4 +20,8 @@ spec:
           mountPath: /data
         ports:
         - containerPort: 29318
-      restartPolicy: UnlessStopped
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: mautrix-whatsapp-pvc
+      restartPolicy: Always
