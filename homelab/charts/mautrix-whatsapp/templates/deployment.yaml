@@ -17,7 +17,7 @@ spec:
         - name: mautrix-whatsapp
           image: "dock.mau.dev/mautrix/whatsapp:latest"
           command: ["mautrix-whatsapp"]
-          args: ["--config", "/data/config.yaml", "--no-update", "--debug"]
+          args: ["--config", "/data/config.yaml", "--no-update"]
           volumeMounts:
             - name: data
               mountPath: /data
