@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mautrix-whatsapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mautrix-whatsapp
+  template:
+    metadata:
+      labels:
+        app: mautrix-whatsapp
+    spec:
+      containers:
+      - name: mautrix-whatsapp
+        image: "{{ .Values.mautrixWhatsapp.image }}:{{ .Values.mautrixWhatsapp.version }}"
+        volumeMounts:
+        - name: data
+          mountPath: /data
+        ports:
+        - containerPort: 29318
+      restartPolicy: {{ .Values.mautrixWhatsapp.restartPolicy }}
+      extraHosts:
+        - name: "host.docker.internal"
+          value: "host-gateway"
+
