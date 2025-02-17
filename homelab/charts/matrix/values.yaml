@@ -13,9 +13,9 @@ matrix-synapse:
         mountPath: /data/matrix-whatsapp-registration.yaml
         subPath: matrix-whatsapp-registration.yaml
 
-    extraConfig:
-      app_service_config_files:
-        - /data/mautrix-whatsapp-registration.yaml
+  extraConfig:
+    app_service_config_files:
+      - /data/mautrix-whatsapp-registration.yaml
 
 
 
