@@ -2,5 +2,19 @@ matrix-synapse:
   serverName: 'alnav.dev'
   publicServerName: 'matrix.alnav.dev'
   argocd: true
+  extraVolumes:
+    - name: mautrix-whatsapp-registration
+      secret:
+        secretName: mautrix-whatsapp-registration
+
+  extraVolumeMounts:
+    - name: mautrix-whatsapp-registration
+      mountPath: /data/matrix-whatsapp-registration.yaml
+      subPath: matrix-whatsapp-registration.yaml
+
+  extraConfig:
+    app_service_config_files:
+      - /data/mautrix-whatsapp-registration.yaml
+
 
 
