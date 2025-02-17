@@ -1,8 +1,9 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: mautrix-whatsapp
 spec:
+  serviceName: "mautrix-whatsapp-service"
   replicas: 1
   selector:
     matchLabels:
@@ -13,15 +14,17 @@ spec:
         app: mautrix-whatsapp
     spec:
       containers:
-      - name: mautrix-whatsapp
-        image: "dock.mau.dev/mautrix/whatsapp:latest"
-        volumeMounts:
-        - name: data
-          mountPath: /data
-        ports:
-        - containerPort: 29318
+        - name: mautrix-whatsapp
+          image: "dock.mau.dev/mautrix/whatsapp:latest"
+          command: ["bash"]
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          ports:
+            - containerPort: 29318
       volumes:
-      - name: data
-        persistentVolumeClaim:
-          claimName: mautrix-whatsapp-pvc
+        - name: data
+          persistentVolumeClaim:
+            claimName: mautrix-whatsapp-pvc
       restartPolicy: Always
+
