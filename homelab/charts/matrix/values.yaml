@@ -8,17 +8,16 @@ matrix-synapse:
         secretName: mautrix-whatsapp-registration
         items:
           - key: mautrix-whatsapp-registration.yaml
-            path: matrix-whatsapp-registration.yaml  # Use the key from the secret and path for the file
+            path: matrix-whatsapp-registration.yaml  # Specify the file in the secret
 
   volumeMounts:
+    # Mount the mautrix-whatsapp-registration secret to /synapse/config/conf.d/
     - name: mautrix-whatsapp-registration
-      mountPath: /data/matrix-whatsapp-registration.yaml
-      subPath: matrix-whatsapp-registration.yaml  # This ensures the file is mounted with the correct name
-
+      mountPath: /synapse/config/conf.d/matrix-whatsapp-registration.yaml
+      subPath: matrix-whatsapp-registration.yaml  # Mount the secret as a file in conf.d/
 
   extraConfig:
     app_service_config_files:
-      - /data/mautrix-whatsapp-registration.yaml
-
+      - /synapse/config/conf.d/matrix-whatsapp-registration.yaml
 
 
