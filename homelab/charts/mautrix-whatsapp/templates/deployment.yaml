@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
       - name: mautrix-whatsapp
-        image: "{{ .Values.mautrixWhatsapp.image }}:{{ .Values.mautrixWhatsapp.version }}"
+        image: "dock.mau.dev/mautrix/whatsapp:latest"
         volumeMounts:
         - name: data
           mountPath: /data
         ports:
         - containerPort: 29318
-      restartPolicy: {{ .Values.mautrixWhatsapp.restartPolicy }}
+      restartPolicy: UnlessStopped
