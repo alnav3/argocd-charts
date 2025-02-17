@@ -16,14 +16,22 @@ spec:
       containers:
         - name: mautrix-whatsapp
           image: "dock.mau.dev/mautrix/whatsapp:latest"
+          command: ["mautrix-whatsapp"]
+          args: ["--config", "/data/config.yaml", "--no-update", "--debug"]
           volumeMounts:
             - name: data
               mountPath: /data
+            - name: config-volume
+              mountPath: /data/config.yaml
+              subPath: config.yaml
           ports:
             - containerPort: 29318
       volumes:
         - name: data
           persistentVolumeClaim:
             claimName: mautrix-whatsapp-pvc
+        - name: config-volume
+          secret:
+            secretName: mautrix-whatsapp-config
       restartPolicy: Always
 
