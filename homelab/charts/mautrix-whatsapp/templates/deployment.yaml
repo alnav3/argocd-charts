@@ -16,7 +16,7 @@ spec:
       containers:
         - name: mautrix-whatsapp
           image: "dock.mau.dev/mautrix/whatsapp:latest"
-          command: ["bash"]
+          command: ["/bin/sh"]
           volumeMounts:
             - name: data
               mountPath: /data
