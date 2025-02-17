@@ -21,7 +21,3 @@ spec:
         ports:
         - containerPort: 29318
       restartPolicy: {{ .Values.mautrixWhatsapp.restartPolicy }}
-      extraHosts:
-        - name: "host.docker.internal"
-          value: "host-gateway"
-
