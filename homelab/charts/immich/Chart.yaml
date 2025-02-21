@@ -1,6 +1,6 @@
 apiVersion: v2
 name: immich-chart
-description: A Helm chart for Sonarr
+description: A Helm chart for Immich
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -24,5 +24,5 @@ appVersion: "1.0"
 
 dependencies:
 - name: immich
-  version: 17.44.11
+  version: 17.48.1
   repository: oci://tccr.io/truecharts
