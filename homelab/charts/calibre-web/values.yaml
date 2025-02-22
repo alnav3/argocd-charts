@@ -17,27 +17,27 @@ calibre-web:
         http:
           port: 8083
 
-persistence:
-  config:
-    enabled: true
-    mountPath: /config
-    type: nfs
-    path: /mnt/Storage/containers/calibre/config
-    server: 10.71.71.19
-    targetSelector:
-      main:
+  persistence:
+    config:
+      enabled: true
+      mountPath: /config
+      type: nfs
+      path: /mnt/Storage/containers/calibre/config
+      server: 10.71.71.19
+      targetSelector:
         main:
-          mountPath: /config
-  books:
-    enabled: true
-    mountPath: /books
-    type: nfs
-    path: /mnt/Storage/containers/calibre/books
-    server: 10.71.71.19
-    targetSelector:
-      main:
+          main:
+            mountPath: /config
+    books:
+      enabled: true
+      mountPath: /books
+      type: nfs
+      path: /mnt/Storage/containers/calibre/books
+      server: 10.71.71.19
+      targetSelector:
         main:
-          mountPath: /books
+          main:
+            mountPath: /books
   ingress:
     main:
       enabled: true
