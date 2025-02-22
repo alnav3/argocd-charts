@@ -17,21 +17,27 @@ calibre-web:
         http:
           port: 8083
 
-  persistence:
-    config:
-      enabled: true
-      mountPath: /config
-      existingClaim: "calibre-config" # Nombre del PVC existente para config
-      size: 1Gi
-      storageClass: "longhorn"  # Replace with your storage class
-      accessMode: ReadWriteOnce
-    books:
-      enabled: true
-      mountPath: /books
-      existingClaim: "calibre-books"  # Nombre del PVC existente para books
-      size: 5Gi
-      storageClass: "longhorn"  # Replace with your storage class
-      accessMode: ReadWriteOnce
+persistence:
+  config:
+    enabled: true
+    mountPath: /config
+    type: nfs
+    path: /mnt/Storage/containers/calibre/config
+    server: 10.71.71.19
+    targetSelector:
+      main:
+        main:
+          mountPath: /config
+  books:
+    enabled: true
+    mountPath: /books
+    type: nfs
+    path: /mnt/Storage/containers/calibre/books
+    server: 10.71.71.19
+    targetSelector:
+      main:
+        main:
+          mountPath: /books
   ingress:
     main:
       enabled: true
