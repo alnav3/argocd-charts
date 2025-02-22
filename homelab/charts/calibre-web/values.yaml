@@ -5,7 +5,7 @@ calibre-web:
     # -- image repository
     repository: ghcr.io/linuxserver/calibre-web
     # -- image tag
-    tag:
+    tag: latest
     # -- image pull policy
     pullPolicy: IfNotPresent
 
