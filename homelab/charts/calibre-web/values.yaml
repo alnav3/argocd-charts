@@ -21,13 +21,10 @@ calibre-web:
     config:
       enabled: true
       mountPath: /config
-      type: nfs
-      path: /mnt/Storage/containers/calibre/config
-      server: 10.71.71.19
-      targetSelector:
-        main:
-          main:
-            mountPath: /config
+      existingClaim: "calibre-web-pvc" # Nombre del PVC existente para config
+      size: 10Gi
+      #storageClass: "longhorn"  # Replace with your storage class
+      accessMode: ReadWriteOnce
     books:
       enabled: true
       mountPath: /books

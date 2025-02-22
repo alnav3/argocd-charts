@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: calibre-web-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: cifs
+  csi:
+    driver: smb.csi.k8s.io
+    volumeHandle: 10.71.71.19/photos
+    volumeAttributes:
+      source: "//10.71.71.19/photos"
+    nodeStageSecretRef:
+      name: calibre-web-secret
+      namespace: default
+    fsType: cifs
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: calibre-web-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  volumeMode: Filesystem
+  volumeName: calibre-web-pv
+  storageClassName: cifs
+
