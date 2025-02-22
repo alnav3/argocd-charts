@@ -47,9 +47,5 @@ calibre-web:
           paths:
             - path: /
               pathType: Prefix
-        - host: calibre.home
-          paths:
-            - path: /
-              pathType: Prefix
       tls: []  # Enable this if you want to add TLS/SSL support
 
