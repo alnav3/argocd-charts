@@ -3,6 +3,11 @@ kind: PersistentVolume
 metadata:
   name: calibre-web-pv
 spec:
+  mountOptions:
+    - dir_mode=0777
+    - file_mode=0777
+    - noperm
+    - cache=none
   capacity:
     storage: 10Gi
   accessModes:
