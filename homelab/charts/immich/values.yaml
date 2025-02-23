@@ -1,8 +1,16 @@
 immich:
   postgresql:
-    enabled: true
+    enabled: false
+  env:
+    DB_HOSTNAME: "postgresql"
+    DB_USERNAME: "{{ .Values.postgresql.auth.username }}"
+    DB_DATABASE_NAME: "{{ .Values.postgresql.auth.DATABASE }}"
+    DB_PASSWORD: "{{ .Values.postgresql.auth.password }}"
   immich:
     persistence:
       library:
         type: pvc
         existingClaim: "immich-upload-pvc"
+postgresql:
+  nameOverride: postgresql
+  fullnameOverride: postgresql
