@@ -3,4 +3,5 @@ immich:
     enabled: true
   persistence:
     library:
+      type: pvc
       existingClaim: "immich-upload-pvc"
