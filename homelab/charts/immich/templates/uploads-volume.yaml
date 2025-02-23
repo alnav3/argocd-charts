@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: immich-upload-pv
+spec:
+  mountOptions:
+    - dir_mode=0777
+    - file_mode=0777
+  capacity:
+    storage: 300Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: cifs
+  csi:
+    driver: smb.csi.k8s.io
+    volumeHandle: 10.71.71.19/photos
+    volumeAttributes:
+      source: "//10.71.71.19/photos"
+    nodeStageSecretRef:
+      name: immich-secret
+      namespace: default
+    fsType: cifs
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: immich-upload-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 300Gi
+  volumeMode: Filesystem
+  volumeName: immich-upload-pv
+  storageClassName: cifs
+
