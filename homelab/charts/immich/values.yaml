@@ -5,67 +5,22 @@ immich:
 
   persistence:
     library:
-      enabled: true
-      existingClaim: "immich-upload-pvc"
-      mountPath: /usr/src/app/upload/library
-      subPath: library
-      targetSelector:
-        main:
-          main: {}
-        microservices:
-          microservices: {}
-
+      enabled: false  # Disable Library persistence
     uploads:
-      enabled: true
-      existingClaim: "immich-upload-pvc"
-      mountPath: /usr/src/app/upload/upload
-      subPath: upload
-      targetSelector:
-        main:
-          main: {}
-        microservices:
-          microservices: {}
-
+      enabled: false  # Disable Uploads persistence
     backups:
-      enabled: true
-      existingClaim: "immich-upload-pvc"
-      mountPath: /usr/src/app/upload/backups
-      subPath: backups
-      targetSelector:
-        main:
-          main: {}
-        microservices:
-          microservices: {}
-
+      enabled: false  # Disable Backups persistence
     thumbs:
-      enabled: true
-      existingClaim: "immich-upload-pvc"
-      mountPath: /usr/src/app/upload/thumbs
-      subPath: thumbs
-      targetSelector:
-        main:
-          main: {}
-        microservices:
-          microservices: {}
-
+      enabled: false  # Disable Thumbs persistence
     profile:
-      enabled: true
-      existingClaim: "immich-upload-pvc"
-      mountPath: /usr/src/app/upload/profile
-      subPath: profile
-      targetSelector:
-        main:
-          main: {}
-        microservices:
-          microservices: {}
-
+      enabled: false  # Disable Profile persistence
     video:
+      enabled: false  # Disable Video persistence
+    upload:
       enabled: true
-      existingClaim: "immich-upload-pvc"
-      mountPath: /usr/src/app/upload/encoded-video
-      subPath: encoded-video
-      targetSelector:
-        main:
-          main: {}
-        microservices:
-          microservices: {}
+      mountPath: /usr/src/app/upload
+      existingClaim: "immich-upload-pvc" # Nombre del PVC existente para config
+      size: 300Gi
+      #storageClass: "longhorn"  # Replace with your storage class
+      accessMode: ReadWriteOnce
+
