@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cnpg-operator-single
+  name: cnpg
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -10,14 +10,12 @@ spec:
     repoURL: https://cloudnative-pg.github.io/charts
     chart: cloudnative-pg
     targetRevision: "0.23.0"
-    helm:
-      parameters:
-        - name: config.clusterWide
-          value: "false"
   destination:
     server: https://kubernetes.default.svc
-    namespace: cnpg-system
+    namespace: default
   syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
     automated:
       selfHeal: true
 
