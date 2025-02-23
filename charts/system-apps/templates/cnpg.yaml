@@ -3,13 +3,13 @@ kind: Application
 metadata:
   name: cnpg
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: https://cloudnative-pg.github.io/charts
     chart: cloudnative-pg
-    targetRevision: HEAD
+    targetRevision: "0.23.0"
   destination:
     server: https://kubernetes.default.svc
     namespace: default
