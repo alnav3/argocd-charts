@@ -1,7 +1,7 @@
 immich:
   cnpg:
     main:
-      enabled: true
+      enabled: false
 
   persistence:
     library:
