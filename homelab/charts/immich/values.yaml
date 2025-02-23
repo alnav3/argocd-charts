@@ -11,38 +11,7 @@ immich:
 postgresql:
   image:
     registry: ghcr.io
-    repository: aaronspruit/bitnami-pg-pgvecto-rs
-    tag: pg16.4.0-v0.2.1-v2
-  primary:
-    # this adds the libraries
-    extendedConfiguration: |-
-      shared_preload_libraries = 'vectors.so'
-    initdb:
-      user: postgres
-      scripts:
-        # this script installs the extension
-        # and then updates the database that was already created
-        # https://github.com/immich-app/immich/discussions/7252#discussioncomment-8534336
-        # https://docs.pgvecto.rs/getting-started/installation.html#from-debian-package
-        00-create-extensions.sql: |
-          \getenv dbname POSTGRES_DATABASE
-          \getenv dbuser POSTGRES_USER
-          \c :dbname
-          ALTER SYSTEM SET search_path TO "$user", public, vectors;
-          CREATE EXTENSION IF NOT EXISTS cube;
-          CREATE EXTENSION IF NOT EXISTS earthdistance;
-          CREATE EXTENSION IF NOT EXISTS vectors;
-          ALTER DATABASE :dbname OWNER TO :dbuser;
-          GRANT ALL ON SCHEMA vectors TO :dbuser;
-        # need to restart to finish loading pgvecto.rs
-        01-restart.sh: |
-          #!/bin/sh
-          pg_ctl restart
-        # after restart, the index_stat table is created, so need to modify that now too
-        02-grant-index.sql: |
-          \getenv dbname POSTGRES_DATABASE
-          \getenv dbuser POSTGRES_USER
-          \c :dbname
-          GRANT SELECT ON TABLE pg_vector_index_stat to :dbuser;
+    repository: soarinferret/bitnami-postgres-pgvecto-rs
+    tag: pg14.5-v0.2.1
   nameOverride: postgresql
   fullnameOverride: postgresql
