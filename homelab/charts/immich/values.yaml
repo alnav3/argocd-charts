@@ -1,17 +1,65 @@
 immich:
   persistence:
     library:
-      enabled: false  # Disable Library persistence
+      enabled: true
+      type: emptyDir
+      mountPath: /usr/src/app/upload/library
+      targetSelector:
+        # Main pod/container is server
+        main:
+          main: {}
+        microservices:
+          microservices: {}
     uploads:
-      enabled: false  # Disable Uploads persistence
+      enabled: true
+      type: emptyDir
+      mountPath: /usr/src/app/upload/upload
+      targetSelector:
+        # Main pod/container is server
+        main:
+          main: {}
+        microservices:
+          microservices: {}
     backups:
-      enabled: false  # Disable Backups persistence
+      enabled: true
+      type: emptyDir
+      mountPath: /usr/src/app/upload/backups
+      targetSelector:
+        # Main pod/container is server
+        main:
+          main: {}
+        microservices:
+          microservices: {}
     thumbs:
-      enabled: false  # Disable Thumbs persistence
+      enabled: true
+      type: emptyDir
+      mountPath: /usr/src/app/upload/thumbs
+      targetSelector:
+        # Main pod/container is server
+        main:
+          main: {}
+        microservices:
+          microservices: {}
     profile:
-      enabled: false  # Disable Profile persistence
+      enabled: true
+      type: emptyDir
+      mountPath: /usr/src/app/upload/profile
+      targetSelector:
+        # Main pod/container is server
+        main:
+          main: {}
+        microservices:
+          microservices: {}
     video:
-      enabled: false  # Disable Video persistence
+      enabled: true
+      type: emptyDir
+      mountPath: /usr/src/app/upload/encoded-video
+      targetSelector:
+        # Main pod/container is server
+        main:
+          main: {}
+        microservices:
+          microservices: {}
     upload:
       enabled: true
       mountPath: /usr/src/app/upload
