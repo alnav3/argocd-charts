@@ -24,7 +24,7 @@ calibre-web:
       existingClaim: "calibre-web-pvc" # Nombre del PVC existente para config
       size: 10Gi
       #storageClass: "longhorn"  # Replace with your storage class
-      accessMode: ReadWriteOnce
+      accessMode: ReadWriteMany
     books:
       enabled: true
       mountPath: /books
