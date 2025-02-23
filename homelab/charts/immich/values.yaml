@@ -1,5 +1,17 @@
 immich:
   persistence:
+    library:
+      enabled: false  # Disable Library persistence
+    uploads:
+      enabled: false  # Disable Uploads persistence
+    backups:
+      enabled: false  # Disable Backups persistence
+    thumbs:
+      enabled: false  # Disable Thumbs persistence
+    profile:
+      enabled: false  # Disable Profile persistence
+    video:
+      enabled: false  # Disable Video persistence
     upload:
       enabled: true
       mountPath: /usr/src/app/upload
