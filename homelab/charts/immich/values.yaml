@@ -8,10 +8,3 @@ immich:
       library:
         type: pvc
         existingClaim: "immich-upload-pvc"
-postgresql:
-  image:
-    registry: ghcr.io
-    repository: soarinferret/bitnami-postgres-pgvecto-rs
-    tag: pg14.5-v0.2.1
-  nameOverride: postgresql
-  fullnameOverride: postgresql
