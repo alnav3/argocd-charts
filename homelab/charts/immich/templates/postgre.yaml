@@ -25,7 +25,7 @@ spec:
         - CREATE EXTENSION IF NOT EXISTS "earthdistance" CASCADE;
   storage:
     size: 4Gi
-    storageClass: immich-postgres
+    storageClass: longhorn
 ---
 apiVersion: v1
 kind: Secret
