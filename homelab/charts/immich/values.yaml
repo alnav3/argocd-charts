@@ -1,4 +1,8 @@
 immich:
+  cnpg:
+    main:
+      enabled: true
+
   persistence:
     library:
       enabled: true
