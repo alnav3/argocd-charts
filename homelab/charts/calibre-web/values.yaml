@@ -20,12 +20,16 @@ calibre-web:
           main:
             mountPath: /config
     books:
-      enabled: true
-      type: nfs
-      path: /mnt/Storage/podVolumes/calibre/books
-      server: 10.71.71.19
-      targetSelector:
-        main:
-          main:
-            mountPath: /books
+      type: pvc
+      existingClaim: "calibre-books-pvc"
+
+      #books:
+      #  enabled: true
+      #  type: nfs
+      #  path: /mnt/Storage/podVolumes/calibre/books
+      #  server: 10.71.71.19
+      #  targetSelector:
+      #    main:
+      #      main:
+      #        mountPath: /books
 
