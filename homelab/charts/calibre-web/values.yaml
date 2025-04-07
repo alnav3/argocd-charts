@@ -6,7 +6,7 @@ calibre-web:
     config:
       enabled: true
       type: nfs
-      path: /mnt/Storage/containers/calibre/config
+      path: /mnt/Storage/podVolumes/calibre/config
       server: 10.71.71.19
       targetSelector:
         main:
@@ -15,7 +15,7 @@ calibre-web:
     books:
       enabled: true
       type: nfs
-      path: /mnt/Storage/containers/calibre/books
+      path: /mnt/Storage/podVolumes/calibre/books
       server: 10.71.71.19
       targetSelector:
         main:
