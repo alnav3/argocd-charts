@@ -16,7 +16,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: books
+            name: calibre-web
             port:
               number: 8083
 ---
@@ -38,6 +38,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: books
+            name: calibre-web
             port:
               number: 8083
