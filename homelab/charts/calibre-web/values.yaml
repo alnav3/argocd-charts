@@ -20,6 +20,7 @@ calibre-web:
           main:
             mountPath: /config
     books:
+      enabled: true
       type: pvc
       existingClaim: "calibre-books-pvc"
 
