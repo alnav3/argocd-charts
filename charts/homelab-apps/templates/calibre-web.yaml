@@ -11,9 +11,6 @@ spec:
     repoURL: https://github.com/alnav3/argocd-charts
     path: homelab/charts/calibre-web/
     targetRevision: HEAD
-    helm:
-      valueFiles:
-        - secrets://values.secret.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: default
