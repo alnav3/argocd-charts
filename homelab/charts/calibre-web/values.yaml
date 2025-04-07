@@ -1,6 +1,13 @@
 calibre-web:
   env:
     TZ: "America/New_York"
+  service:
+    main:
+      ports:
+        main:
+          port: 443
+          protocol: https
+          targetPort: 443
 
   persistence:
     config:
