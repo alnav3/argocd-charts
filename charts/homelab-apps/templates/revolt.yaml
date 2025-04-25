@@ -11,6 +11,8 @@ spec:
     repoURL: https://github.com/alnav3/argocd-charts
     path: homelab/charts/revolt/
     targetRevision: HEAD
+    valueFiles:
+      - secrets://values.secret.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: default

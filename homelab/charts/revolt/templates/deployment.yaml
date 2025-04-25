@@ -25,6 +25,10 @@ spec:
         ports:
         - containerPort: 8000
           name: api
+        # Add volumeMounts here if needed, e.g.:
+        # volumeMounts:
+        # - name: storage
+        #   mountPath: /data
       - image: ghcr.io/revoltchat/bonfire:20220715-1
         name: events
         ports:
@@ -47,3 +51,8 @@ spec:
           containerPort: 6379
       - image: mongo
         name: database
+      # Add volumes here if volumeMounts are used, e.g.:
+      # volumes:
+      # - name: storage
+      #   persistentVolumeClaim:
+      #     claimName: pvc-name
