@@ -17,6 +17,13 @@ spec:
             name: jellyfin
             port:
               number: 4200
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: back
+            port:
+              number: 8081
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -49,6 +56,19 @@ spec:
   ports:
   - port: 4200
     targetPort: 4200
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: back
+  namespace: default
+spec:
+  type: ExternalName
+  externalName: 10.71.71.11
+  ports:
+  - port: 8081
+    targetPort: 8081
     protocol: TCP
 
 
