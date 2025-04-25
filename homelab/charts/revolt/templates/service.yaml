@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  ports:
+  - protocol: TCP
+    name: api
+    port: 8000
+  - protocol: TCP
+    name: events
+    port: 9000
+  - protocol: TCP
+    name: web
+    port: 5000
+  - protocol: TCP
+    name: redis
+    port: 6379
+  selector:
+    app: {{ .Release.Name }}

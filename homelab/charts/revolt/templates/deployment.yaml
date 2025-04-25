@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Release.Name }}
+  name: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+      - image: ghcr.io/revoltchat/server:20220715-1
+        name: api
+        envFrom:
+        - configMapRef:
+            name: {{ .Values.configmap.name }}
+        - secretRef:
+            name: {{ .Values.secrets.name }}
+        ports:
+        - containerPort: 8000
+          name: api
+      - image: ghcr.io/revoltchat/bonfire:20220715-1
+        name: events
+        ports:
+        - containerPort: 9000
+          name: events
+      - image: ghcr.io/revoltchat/client:master
+        name: web
+        envFrom:
+        - configMapRef:
+            name: {{ .Values.configmap.name }}
+        - secretRef:
+            name: {{ .Values.secrets.name }}
+        ports:
+        - containerPort: 5000
+          name: web
+      - name: redis
+        image: redis:alpine
+        ports:
+        - name: redis
+          containerPort: 6379
+      - image: mongo
+        name: database

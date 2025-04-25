@@ -1,0 +1,17 @@
+configmap:
+  name: configmap-revolt-conf
+  # data:
+  #   KEY1: value1
+  #   KEY2: value2
+
+secrets:
+  name: secret-revolt-conf
+  # data:
+  #   SECRET_KEY1: c2VjcmV0dmFsdWUx  # base64 encoded
+  #   SECRET_KEY2: c2VjcmV0dmFsdWUy
+
+ingress:
+  host: chat.alnav.dev
+  tls:
+    enabled: false
+    secretName: tls-secret
