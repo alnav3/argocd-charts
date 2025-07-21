@@ -1,0 +1,30 @@
+n8n:
+  image:
+    repository: n8nio/n8n  # Default; change if using a custom image[1]
+    tag: "latest"  # Pin to a specific version for stability
+    pullPolicy: IfNotPresent
+  main:
+    replicaCount: 1
+    config:
+      n8n:
+        encryption_key: "test"  # Required for stateless mode; store securely[1]
+      db:
+        type: sqlite
+    persistence:
+      enabled: true  # Enable PVC for data persistence[1]
+      size: 5Gi  # Increase based on workload
+    resources:
+      requests:
+        memory: 512Mi
+        cpu: 100m
+      limits:
+        memory: 2048Mi
+        cpu: 1
+  ingress:
+    enabled: true
+    className: "nginx-internal"
+    hosts:
+      - host: n8n.home
+        paths: ["/"]
+
+
